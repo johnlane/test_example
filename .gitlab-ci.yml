@@ -1,0 +1,14 @@
+include:
+  project: 'ci/templates'
+  file: 'Git.gitlab-ci.yml'
+
+stages:
+  - publish
+
+publish:
+  extends: .gitpush
+  stage: publish
+  variables:
+    GIT_REMOTE: "git@github.com:johnlane/test_example.git"
+    SSH_PRIVATE_KEY: "$GITHUB_SSH_KEY"
+    SSH_PASSPHRASE:  "$GITHUB_SSH_PASSPHRASE"
